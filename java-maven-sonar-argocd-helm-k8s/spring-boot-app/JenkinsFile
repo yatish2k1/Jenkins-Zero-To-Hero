@@ -12,6 +12,14 @@ pipeline {
         git branch: 'main', url: 'https://github.com/yatish2k1/Jenkins-Zero-To-Hero.git'
       }
     }
+    stage('Install Docker in Agent') {
+      steps {
+        sh '''
+           apt-get update
+           apt-get install -y docker.io
+        ''
+       }
+    }
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
